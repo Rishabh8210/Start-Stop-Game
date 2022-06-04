@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Number Start Stop</title>
     <style>
-        *{
+        * {
             margin: 0px;
             padding: 0px;
         }
-        body{
+
+        body {
             background-color: rgb(13, 130, 202);
         }
 
@@ -55,13 +57,56 @@
                 text-align: center;
             }
     }
+        @media only screen and (min-width: 320px) and (max-width:627px) {
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                height: 300px;
+            }
 
+            .Box h1 {
+                font-size: 31px;
+            }
+
+            .Btn {
+                width: 69px;
+                padding: 4px;
+                font-size: 17px;
+                font-weight: 700;
+                border-radius: 23px;
+                border: 1px solid greenyellow;
+                background-color: greenyellow;
+                cursor: pointer;
+                margin-left: 4px;
+            }
+
+            .Btn:hover {
+                background-color: springgreen;
+                transition: all 0.3s ease-in;
+                border: 1px solid springgreen;
+            }
+
+            .name {
+                width: 85%;
+                height: 45px;
+            }
+
+            .name p {
+                font-size: 28px;
+                font-weight: 700;
+                color: white;
+                text-align: center;
+            }
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="Box">
-            <h1>Can You Stop At 15 ?</h1>
+            <h1 id="getNumber"></h1>
         </div>
         <div class="name">
             <p id="getName"></p>
@@ -72,21 +117,24 @@
             <button id="btn2" class="Btn">Reset</button>
         </div>
     </div>
-    
+
 
     <script>
         const name = document.querySelector('#getName');
+        const number = document.querySelector('#getNumber');
         const btn = document.getElementById('btn');
         const btn1 = document.getElementById('btn1');
         const btn2 = document.getElementById('btn2');
         let n = 0;
         let time;
+        let randNumber = Math.floor(Math.random()*1000);
+        number.innerHTML = `Can You Stop At ${randNumber} ?`;
         const start = () => {
             name.innerHTML = "Loading...";
             time = setInterval(() => {
                 name.innerHTML = `${n}`;
                 n++;
-            },10)
+            }, 10)
         };
         const stop = () => {
             clearInterval(time);
@@ -96,9 +144,10 @@
             name.innerHTML = "";
             clearInterval(time);
         }
-        btn.addEventListener('click',start);
-        btn1.addEventListener('click',stop);
-        btn2.addEventListener('click',reset);
+        btn.addEventListener('click', start);
+        btn1.addEventListener('click', stop);
+        btn2.addEventListener('click', reset);
     </script>
 </body>
+
 </html>
