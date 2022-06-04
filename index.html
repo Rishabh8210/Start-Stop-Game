@@ -127,14 +127,14 @@
         const btn2 = document.getElementById('btn2');
         let n = 0;
         let time;
-        let randNumber = Math.floor(Math.random()*1000);
+        let randNumber = Math.floor(Math.random()*100);
         number.innerHTML = `Can You Stop At ${randNumber} ?`;
         const start = () => {
             name.innerHTML = "Loading...";
             time = setInterval(() => {
                 name.innerHTML = `${n}`;
                 n++;
-            }, 10)
+            }, 100)
         };
         const stop = () => {
             clearInterval(time);
