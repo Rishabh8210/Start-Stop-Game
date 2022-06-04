@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Start Stop</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            background-color: rgb(13, 130, 202);
+        }
+
+        @media only screen and (min-width: 627px)
+        {
+            .container{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                height: 500px;
+            }
+
+            .Box h1{
+                font-size: 69px;
+            }
+
+            .Btn{
+                width: 100px;
+                padding: 5px;
+                font-size: 19px;
+                font-weight: 700;
+                border-radius: 23px;
+                border: 1px solid greenyellow;
+                background-color: greenyellow;
+                cursor: pointer;
+                margin-left: 10px;
+            }
+            .Btn:hover{
+                background-color: springgreen;
+                transition: all 0.3s ease-in;
+                border: 1px solid springgreen;
+            }
+            .name{
+                width: 100%;
+                height: 60px;
+            }
+            .name p{
+                font-size: 43px;
+                font-weight: 700;
+                color: white;
+                text-align: center;
+            }
+    }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="Box">
+            <h1>Can You Stop At 15 ?</h1>
+        </div>
+        <div class="name">
+            <p id="getName"></p>
+        </div>
+        <div class="buttons">
+            <button id="btn" class="Btn">Start</button>
+            <button id="btn1" class="Btn">Stop</button>
+            <button id="btn2" class="Btn">Reset</button>
+        </div>
+    </div>
+    
+
+    <script>
+        const name = document.querySelector('#getName');
+        const btn = document.getElementById('btn');
+        const btn1 = document.getElementById('btn1');
+        const btn2 = document.getElementById('btn2');
+        let n = 0;
+        let time;
+        const start = () => {
+            name.innerHTML = "Loading...";
+            time = setInterval(() => {
+                name.innerHTML = `${n}`;
+                n++;
+            },100)
+        };
+        const stop = () => {
+            clearInterval(time);
+        }
+        const reset = () => {
+            n = 0;
+            name.innerHTML = "";
+            clearInterval(time);
+        }
+        btn.addEventListener('click',start);
+        btn1.addEventListener('click',stop);
+        btn2.addEventListener('click',reset);
+    </script>
+</body>
+</html>
